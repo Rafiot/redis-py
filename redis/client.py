@@ -800,17 +800,6 @@ class StrictRedis(object):
         keys = list_or_args(keys, args)
         return self.execute_command('SUNIONSTORE', dest, *keys)
 
-
-    #### SORTED SET COMMANDS ####
-<<<<<<< HEAD
-    def zadd(self, name, *args):
-        """
-        Add that the items of ``args`` to the sorted set ``name``.
-        args = [ score1, value1, score2, value2 ... ]
-        """
-        keys = list_or_args(name, args)
-        return self.execute_command('ZADD', *keys)
-=======
     def zadd(self, name, *args, **kwargs):
         """
         Set any number of score, element-name pairs to the key ``name``. Pairs
@@ -832,7 +821,6 @@ class StrictRedis(object):
             pieces.append(pair[1])
             pieces.append(pair[0])
         return self.execute_command('ZADD', name, *pieces)
->>>>>>> 3265af8d67299c0d7e91ea657a872e4de1693922
 
     def zcard(self, name):
         "Return the number of elements in the sorted set ``name``"
